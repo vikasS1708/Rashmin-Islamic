@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(to bottom,#020111,#0b0b2e);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* Moon */
+
+.moon{
+position:absolute;
+top:60px;
+right:60px;
+width:120px;
+height:120px;
+background:#fff3b0;
+border-radius:50%;
+box-shadow:0 0 40px #ffd700;
+}
+
+/* Stars */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.3}
+to{opacity:1}
+}
+
+/* Floating Hearts */
+
+.heart{
+position:absolute;
+color:#ff4d6d;
+font-size:40px;
+text-shadow:0 0 10px #ff4d6d;
+animation: float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-10vh);opacity:0}
+}
+
+/* Container */
+
+.container{
+padding:110px 20px 40px;
+max-width:650px;
+margin:auto;
+}
+
+/* Happy Birthday */
+
+.birthday{
+font-family:'Dancing Script',cursive;
+font-size:38px;
+color:#ffb3c6;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 5px #ffb3c6}
+to{text-shadow:0 0 20px #ff4d6d}
+}
+
+/* Name */
+
+.title{
+font-family:'Great Vibes',cursive;
+font-size:55px;
+color:#ffd700;
+animation: glowGold 2s infinite alternate;
+}
+
+@keyframes glowGold{
+from{text-shadow:0 0 5px #ffd700}
+to{text-shadow:0 0 25px #ffd700}
+}
+
+/* Subtitle */
+
+.subtitle{
+font-size:20px;
+color:#ffb3c6;
+margin-bottom:25px;
+}
+
+/* Photo Frame */
+
+.photo-frame{
+width:180px;
+height:180px;
+margin:20px auto;
+border-radius:50%;
+padding:6px;
+
+
+}
+
+.photo-frame img{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #a8a89f;
+}
+
+/* Date */
+
+.date{
+color:#f7e7a9;
+margin:20px 0;
+font-size:18px;
+}
+
+/* Message */
+
+.message{
+font-family:'Dancing Script',cursive;
+font-size:22px;
+line-height:1.7;
+margin-bottom:30px;
+padding:0 10px;
+}
+
+/* Button */
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#ffd700;
+color:black;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+box-shadow:0 0 15px #ffd700;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#111;
+border:2px solid gold;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 30px gold;
+display:none;
+z-index:1000;
+width:90%;
+max-width:400px;
+}
+
+.popup h2{
+font-family: 'Times New Roman', Times, serif;
+color:#ffd700;
+font-size:17px;
+margin-bottom:10px;
+}
+
+.close{
+margin-top:10px;
+cursor:pointer;
+color:white;
+font-size:18px;
+}
+
+video{
+width:100%;
+border-radius:10px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:600px){
+
+.title{
+font-size:40px;
+}
+
+.birthday{
+font-size:30px;
+}
+
+.photo-frame{
+width:140px;
+height:140px;
+}
+
+.message{
+font-size:19px;
+}
+
+.moon{
+width:80px;
+height:80px;
+top:40px;
+right:30px;
+}
+
+.heart{
+font-size:30px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="moon"></div>
+
+<div class="container">
+
+<div class="birthday"> Happy Birthday <br>   
+ </div>
+
+<div class="title">Rashmin Rathod</div>
+
+<div class="subtitle">Uff Panfa  <i> (Mine)</i> ❤️</div>
+
+<div class="photo-frame">
+<img src="rashmin.jpg" alt="Rashmin">
+</div>
+
+<div class="date">16 Ramadan 1428 AH</div>
+
+<div class="message">
+Tum sirf meri khushi nahi ho,  
+tum meri dua, meri mohabbat aur meri sabse khoobsurat kahani ho.
+
+Allah tumhe hamesha apni hifazat mein rakhe. <br>
+
+Happy Islamic Birthday moti 🌙
+</div>
+
+<button onclick="showPopup()">Click for Surprise 🎁</button>
+
+</div>
+
+<!-- Popup Video -->
+
+<div class="popup" id="popup">
+
+<h2>✨ Tum meri zindagi ki sabse khoobsurat dua ho ✨</h2>
+
+<video id="birthdayVideo" controls>
+<source src="birthday.mp4" type="video/mp4">
+</video>
+
+<div class="close" onclick="closePopup()">Close</div>
+
+</div>
+
+<script>
+
+/* Stars */
+
+for(let i=0;i<90;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+document.body.appendChild(star);
+}
+
+/* Hearts */
+
+for(let i=0;i<25;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(heart);
+}
+
+/* Popup */
+
+function showPopup(){
+
+let popup=document.getElementById("popup");
+let video=document.getElementById("birthdayVideo");
+
+popup.style.display="block";
+video.play();
+
+}
+
+function closePopup(){
+
+let popup=document.getElementById("popup");
+let video=document.getElementById("birthdayVideo");
+
+popup.style.display="none";
+video.pause();
+video.currentTime=0;
+
+}
+
+</script>
+
+</body>
+</html>
